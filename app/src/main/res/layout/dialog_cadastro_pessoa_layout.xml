@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastro"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/edt_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edt_idade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Idade"
+        android:inputType="number|numberDecimal"
+        android:numeric="integer" />
+
+    <com.vicmikhailau.maskededittext.MaskedEditText
+        android:id="@+id/edt_nasc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Data de nascimento"
+        android:inputType="datetime|date"
+        app:mask="##/##/####"
+        />
+
+    <EditText
+        android:id="@+id/edt_unif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Unidade federativa"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edt_muni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Município"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edt_zona"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Zona"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edt_secao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Seção"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edt_numero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Número"
+        android:inputType="text" />
+
+    <com.vicmikhailau.maskededittext.MaskedEditText
+        android:id="@+id/edt_dataEmissao"
+        android:inputType="datetime|date"
+        app:mask="##/##/####"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Data de emissão"
+         />
+
+    <Button
+        android:id="@+id/cadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CADASTRAR" />
+</LinearLayout>
