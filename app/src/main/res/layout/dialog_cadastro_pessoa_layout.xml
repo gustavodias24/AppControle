@@ -13,6 +13,16 @@
         android:text="Cadastro"
         android:textSize="20sp" />
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:src="@raw/imagedefault"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
+
     <EditText
         android:id="@+id/edt_nome"
         android:layout_width="match_parent"
@@ -20,6 +30,24 @@
         android:ems="10"
         android:hint="Nome"
         android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edt_cpf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="CPF"
+        android:inputType="text"
+        android:numeric="integer" />
+
+    <EditText
+        android:id="@+id/edt_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="RG"
+        android:inputType="text"
+        android:numeric="integer" />
 
     <EditText
         android:id="@+id/edt_idade"

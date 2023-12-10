@@ -1,11 +1,16 @@
 package benicio.solucoes.appcontrole.model;
 
+
 public class PessoaModel {
     String id, idFamilia ,nomeEleitor, dataNascimento, unidadeFederativa, municipio, zona, secao, numero, dataEmissao, idade;
+    String rg, cpf, foto;
+    String fotoString;
 
     @Override
     public String toString() {
         return  "Nome do eleitor: " + nomeEleitor + '\n' +
+                "CPF: " + cpf + '\n' +
+                "RG: " + rg + '\n' +
                 "Data de nascimento: " + dataNascimento + '\n' +
                 "Unidade federativa: " + unidadeFederativa + '\n' +
                 "Município: " + municipio + '\n' +
@@ -15,7 +20,7 @@ public class PessoaModel {
                 "Data emissão: " + dataEmissao ;
     }
 
-    public PessoaModel(String id, String idFamilia, String nomeEleitor, String dataNascimento, String unidadeFederativa, String municipio, String zona, String secao, String numero, String dataEmissao, String idade) {
+    public PessoaModel(String id, String idFamilia, String nomeEleitor, String dataNascimento, String unidadeFederativa, String municipio, String zona, String secao, String numero, String dataEmissao, String idade, String rg, String cpf, String foto, String fotoString) {
         this.id = id;
         this.idFamilia = idFamilia;
         this.nomeEleitor = nomeEleitor;
@@ -27,6 +32,42 @@ public class PessoaModel {
         this.numero = numero;
         this.dataEmissao = dataEmissao;
         this.idade = idade;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.foto = foto;
+        this.fotoString = fotoString;
+    }
+
+    public String getFotoString() {
+        return fotoString;
+    }
+
+    public void setFotoString(String fotoString) {
+        this.fotoString = fotoString;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public String getIdade() {

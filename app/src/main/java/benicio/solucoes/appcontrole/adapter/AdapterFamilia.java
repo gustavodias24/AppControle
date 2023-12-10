@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -39,7 +40,10 @@ public class AdapterFamilia extends RecyclerView.Adapter<AdapterFamilia.MyViewHo
         FamiliaModel familiaModel = lista.get(position);
         holder.info.setText(familiaModel.toString());
 
-        holder.itemView.getRootView().setOnClickListener( view -> {
+        holder.itemView.getRootView().setClickable(false);
+
+        holder.btn_cadastro_pessoa.setVisibility(View.VISIBLE);
+        holder.btn_cadastro_pessoa.setOnClickListener( view -> {
             Intent i = new Intent(c, PessoaActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             i.putExtra("idFamilia", familiaModel.getId());
@@ -55,9 +59,11 @@ public class AdapterFamilia extends RecyclerView.Adapter<AdapterFamilia.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView info;
+        Button btn_cadastro_pessoa;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             info = itemView.findViewById(R.id.text_info_generic);
+            btn_cadastro_pessoa = itemView.findViewById(R.id.btn_cadastro_pessoa);
         }
     }
 }
