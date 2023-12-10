@@ -5,6 +5,8 @@ public class DoacaoModel {
     String id, idFamilia, idLocalidade, data, obs, tipo, nomeFamilia ;
     int quantidade = 1;
 
+    int status = 0; // em andamento, cancelado, concluido
+
     @Override
     public String toString() {
         return  "Data: " + data + '\n' +
@@ -24,6 +26,14 @@ public class DoacaoModel {
         this.tipo = tipo;
         this.nomeFamilia = nomeFamilia;
         this.quantidade = quantidade;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getIdLocalidade() {
