@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         mainBinding.catFazendaBairro.setOnClickListener(view -> startActivity(new Intent(this, LocalidadeActivity.class)));
         mainBinding.cadFamilia.setOnClickListener(view -> startActivity(new Intent(this, FamiliaActivity.class)));
-        mainBinding.cadDoacao.setOnClickListener(view -> startActivity(new Intent(this, DoacaoActivity.class)));
+        mainBinding.cadDoacao.setOnClickListener(view -> startActivity(new Intent(this, SelecionarFamiliaDoacaoActivity.class)));
         mainBinding.relGel.setOnClickListener(view -> startActivity(new Intent(this, RelatorioGeralActivity.class)));
         mainBinding.relFazendoBairro.setOnClickListener(view -> startActivity(new Intent(this, RelatorioFazendaBairroActivity.class)));
         mainBinding.relEtariaSecao.setOnClickListener(view -> startActivity(new Intent(this, RelatorioFaixaEtariaSecaoActivity.class)));

@@ -29,7 +29,7 @@ import benicio.solucoes.appcontrole.util.LocalidadeUtil;
 public class LocalidadeActivity extends AppCompatActivity {
     ActivityLocalidadeBinding mainBinding;
     RecyclerView r;
-    AdapterLocalidade adapter;
+    AdapterLocalidade adapterLocalidade;
     List<LocalidadeModel> lista = new ArrayList<>();
     Dialog d;
     @Override
@@ -56,8 +56,8 @@ public class LocalidadeActivity extends AppCompatActivity {
             lista.addAll(LocalidadeUtil.returnLocalidade(this));
             mainBinding.textInfo.setVisibility(View.GONE);
         }
-        adapter = new AdapterLocalidade(lista, this);
-        r.setAdapter(adapter);
+        adapterLocalidade = new AdapterLocalidade(lista, this);
+        r.setAdapter(adapterLocalidade);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -87,7 +87,7 @@ public class LocalidadeActivity extends AppCompatActivity {
 
             lista.clear();
             lista.addAll(listaSave);
-            adapter.notifyDataSetChanged();
+            adapterLocalidade.notifyDataSetChanged();
 
         });
 

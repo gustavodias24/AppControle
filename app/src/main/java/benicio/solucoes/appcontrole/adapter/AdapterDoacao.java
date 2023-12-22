@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import benicio.solucoes.appcontrole.R;
@@ -66,14 +67,24 @@ public class AdapterDoacao extends RecyclerView.Adapter<AdapterDoacao.MyViewHold
 
                 dialogBinding.button.setOnClickListener( view2 -> {
                     Toast.makeText(c, "Status atualizado", Toast.LENGTH_SHORT).show();
+                    int status = 0;
                     if ( dialogBinding.radioButton3.isChecked()){
-                        doacaoModel.setStatus(0);
+                        status = 0 ;
                     }else if (dialogBinding.radioButton4.isChecked()){
-                        doacaoModel.setStatus(1);
+                        status = 1 ;
                     }else{
-                        doacaoModel.setStatus(2);
+                        status = 2;
                     }
-                    DoacaoUtil.savedDoacao(lista, c);
+
+                    List<DoacaoModel> listaCompleta = DoacaoUtil.returnDoacao(c);
+                    for ( DoacaoModel doacaoAtualizar : listaCompleta){
+                        if ( doacaoAtualizar.getId().equals(doacaoModel.getId())){
+                            doacaoAtualizar.setStatus(status);
+                            DoacaoUtil.savedDoacao(listaCompleta, c);
+                            break;
+                        }
+                    }
+                    doacaoModel.setStatus(status);
                     this.notifyDataSetChanged();
                     d.dismiss();
                 });

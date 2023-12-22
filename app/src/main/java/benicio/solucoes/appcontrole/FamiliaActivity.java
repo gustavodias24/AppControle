@@ -37,7 +37,7 @@ public class FamiliaActivity extends AppCompatActivity {
 
     ActivityFamiliaBinding mainBinding;
     RecyclerView r;
-    AdapterFamilia adapter;
+    AdapterFamilia adapterFamilia;
     List<FamiliaModel> lista = new ArrayList<>();
     Dialog d;
 
@@ -65,8 +65,8 @@ public class FamiliaActivity extends AppCompatActivity {
             lista.addAll(FamiliaUtil.returnFamilia(this));
             mainBinding.textInfo.setVisibility(View.GONE);
         }
-        adapter = new AdapterFamilia(lista, this);
-        r.setAdapter(adapter);
+        adapterFamilia = new AdapterFamilia(lista, this, false);
+        r.setAdapter(adapterFamilia);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -131,7 +131,7 @@ public class FamiliaActivity extends AppCompatActivity {
 
             lista.clear();
             lista.addAll(listaSave);
-            adapter.notifyDataSetChanged();
+            adapterFamilia.notifyDataSetChanged();
 
         });
 

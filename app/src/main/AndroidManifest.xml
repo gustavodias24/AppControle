@@ -28,10 +28,14 @@
         android:theme="@style/Theme.AppControle"
         tools:targetApi="31">
         <activity
-            android:name=".RelatorioFaixaEtariaSecaoActivity"
+            android:name=".SelecionarFamiliaDoacaoActivity"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar"
             />
+        <activity
+            android:name=".RelatorioFaixaEtariaSecaoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" />
         <activity
             android:name=".RelatorioFazendaBairroActivity"
             android:exported="false"

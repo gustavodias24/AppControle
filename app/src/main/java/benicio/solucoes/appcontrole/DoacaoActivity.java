@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,9 +38,13 @@ public class DoacaoActivity extends AppCompatActivity {
 
     ActivityDoacaoBinding mainBinding;
     RecyclerView r;
-    AdapterDoacao adapter;
+    AdapterDoacao adapterDoacao;
     List<DoacaoModel> lista = new ArrayList<>();
+    List<DoacaoModel> listaCompleta = new ArrayList<>();
     Dialog d;
+    Bundle b;
+
+    String nomeFamilia = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +55,13 @@ public class DoacaoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Cadastro de doação");
 
+        b = getIntent().getExtras();
+        nomeFamilia = b.getString("nomeFamilia", "");
+
         configurarDialog();
         configurarRecycler();
         mainBinding.fabAdd.setOnClickListener( view -> d.show());
+
     }
 
     private void configurarRecycler() {
@@ -61,11 +70,16 @@ public class DoacaoActivity extends AppCompatActivity {
         r.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         r.setHasFixedSize(true);
         if ( DoacaoUtil.returnDoacao(this) != null){
-            lista.addAll(DoacaoUtil.returnDoacao(this));
+            for ( DoacaoModel doacaoModel : DoacaoUtil.returnDoacao(this)){
+                listaCompleta.add(doacaoModel);
+                if (doacaoModel.getNomeFamilia().equals(nomeFamilia)){
+                    lista.add(doacaoModel);
+                }
+            }
             mainBinding.textInfo.setVisibility(View.GONE);
         }
-        adapter = new AdapterDoacao(lista, this);
-        r.setAdapter(adapter);
+        adapterDoacao = new AdapterDoacao(lista, this);
+        r.setAdapter(adapterDoacao);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -94,6 +108,8 @@ public class DoacaoActivity extends AppCompatActivity {
 
             Toast.makeText(getApplicationContext(), "Família selecionada: " + selectedSiglaEstado, Toast.LENGTH_SHORT).show();
         });
+
+        autoCompleteTextView.setText(nomeFamilia);
 
         Date dataAtual = new Date();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -124,6 +140,10 @@ public class DoacaoActivity extends AppCompatActivity {
                     }
                 }
             }
+            int quantidade = 0;
+            try{
+                quantidade = Integer.parseInt(dialogBinding.edtQuantidade.getText().toString());
+            }catch (Exception e){}
 
             listaSave.add(new DoacaoModel(
                     id,
@@ -133,7 +153,7 @@ public class DoacaoActivity extends AppCompatActivity {
                     dialogBinding.edtObs.getText().toString(),
                     dialogBinding.radioButton.isChecked() ? "Exame" : "Cesta básica",
                     dialogBinding.autoCompleteTextView.getText().toString(),
-                    Integer.parseInt(dialogBinding.edtQuantidade.getText().toString())
+                    quantidade
                     ));
 
             DoacaoUtil.savedDoacao(listaSave, this);
@@ -146,8 +166,12 @@ public class DoacaoActivity extends AppCompatActivity {
             mainBinding.textInfo.setVisibility(View.GONE);
 
             lista.clear();
-            lista.addAll(listaSave);
-            adapter.notifyDataSetChanged();
+            for ( DoacaoModel doacaoModel : DoacaoUtil.returnDoacao(this)){
+                if (doacaoModel.getNomeFamilia().equals(nomeFamilia)){
+                    lista.add(doacaoModel);
+                }
+            }
+            adapterDoacao.notifyDataSetChanged();
 
         });
 

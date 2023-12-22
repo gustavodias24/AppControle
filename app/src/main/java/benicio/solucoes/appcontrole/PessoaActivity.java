@@ -265,7 +265,10 @@ public class PessoaActivity extends AppCompatActivity {
             if (PessoaUtil.returnPessoa(this) != null){
                 listaSave.addAll(PessoaUtil.returnPessoa(this));
             }
-
+            String imageUriString2 = "";
+            if (imageUri != null){
+                imageUriString2 = imageUri.toString();
+            }
             listaSave.add(
                     new PessoaModel(
                             id,
@@ -282,7 +285,7 @@ public class PessoaActivity extends AppCompatActivity {
                             dialogBinding.edtRg.getText().toString(),
                             dialogBinding.edtCpf.getText().toString(),
                             linkImage,
-                            imageUri.toString()
+                            imageUriString2
                             )
             );
 
